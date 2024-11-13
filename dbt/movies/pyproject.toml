@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "movies"
+version = "0.1.0"
+description = ""
+authors = ["filip ziętara <filip.zietara1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+setuptools = "^75.3.0"
+dbt-core = "^1.8.8"
+dbt-bigquery = "^1.8.3"
+shandy-sqlfmt = {extras = ["jinjafmt"], version = "^0.23.2"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

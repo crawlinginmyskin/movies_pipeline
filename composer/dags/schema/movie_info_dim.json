@@ -1,0 +1,36 @@
+[  {
+    "name": "title",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }, 
+  {
+    "name": "year",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  }, 
+  {
+    "name": "release_date",
+    "type": "DATE",
+    "mode": "NULLABLE"
+  }, 
+  {
+    "name": "genre",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }, 
+  {
+    "name": "director",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }, 
+  {
+    "name": "writer",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }, 
+  {
+    "name": "country",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }
+]

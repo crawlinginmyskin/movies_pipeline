@@ -1,0 +1,31 @@
+steps:
+  - id: "Build wheel"
+    name: "python:3.12-slim"
+    entrypoint: "bash"
+    args:
+      - -c
+      -  |
+        pip3 install poetry
+        poetry init
+        poetry build
+
+  - id: "Build docker image"
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        docker build -t some-location-docker.pkg.dev/GCP_PROJECT_ID/images/omdb_downloader:${SHORT_SHA} .
+        docker tag some-location-docker.pkg.dev/GCP_PROJECT_ID/images/omdb_downloader:${SHORT_SHA} some-location-docker.pkg.dev/GCP_PROJECT_ID/images/omdb_downloader:latest
+
+  - id: "Push docker image"
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        docker push some-location-docker.pkg.dev/GCP_PROJECT_ID/images/omdb_downloader:${SHORT_SHA}
+        docker push some-location-docker.pkg.dev/GCP_PROJECT_ID/images/omdb_downloader:latest
+
+options:
+  logging: CLOUD_LOGGING_ONLY

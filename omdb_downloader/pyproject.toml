@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "omdb-downloader"
+version = "0.1.0"
+description = ""
+authors = ["filip ziętara <filip.zietara1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.3"
+gcsfs = "^2024.10.0"
+google-cloud-secret-manager = "^2.21.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

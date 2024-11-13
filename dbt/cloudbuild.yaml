@@ -1,0 +1,29 @@
+steps:
+  - id: "Build docker image"
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        docker build -t some-location-docker.pkg.dev/GCP_PROJECT_ID/images/dbt:${SHORT_SHA} .
+        docker tag some-location-docker.pkg.dev/GCP_PROJECT_ID/images/dbt:${SHORT_SHA} some-location-docker.pkg.dev/GCP_PROJECT_ID/images/dbt:latest
+
+  - id: "Test run docker image"
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        docker run -e DBT_DATASET=prod -e DBT_PROJECT=GCP_PROJECT_ID -e DBT_LOCATION=some-location -e CONTAINER_COMMAND=ls some-location-docker.pkg.dev/GCP_PROJECT_ID/images/dbt:${SHORT_SHA}
+    
+  - id: "Push docker image"
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        docker push some-location-docker.pkg.dev/GCP_PROJECT_ID/images/dbt:${SHORT_SHA}
+        docker push some-location-docker.pkg.dev/GCP_PROJECT_ID/images/dbt:latest
+
+options:
+  logging: CLOUD_LOGGING_ONLY

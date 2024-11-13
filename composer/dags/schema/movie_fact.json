@@ -1,0 +1,21 @@
+[{
+    "name": "movie_title",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  }, 
+  {
+    "name": "movie_year",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  }, 
+  {
+    "name": "box_office",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  }, 
+  {
+    "name": "download_date",
+    "type": "DATE",
+    "mode": "NULLABLE"
+  }
+]

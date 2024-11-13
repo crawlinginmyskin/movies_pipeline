@@ -1,0 +1,11 @@
+steps:
+  - id: 'Sync'
+    name: 'google/cloud-sdk:latest'
+    entrypoint: 'sh'
+    args:
+    - '-c'
+    - |
+      gsutil -m rsync -d -r ./dags gs://COMPOSER_BUCKET/dags
+
+options:
+  logging: CLOUD_LOGGING_ONLY

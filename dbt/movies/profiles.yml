@@ -1,0 +1,13 @@
+movies:
+  outputs:
+    docker:
+      dataset: testing
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: some-location
+      method: oauth
+      priority: interactive
+      project: GCP_PROJECT_ID
+      threads: 5
+      type: bigquery
+  target: docker

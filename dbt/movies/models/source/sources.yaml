@@ -1,0 +1,15 @@
+version: 1
+
+sources:
+  - name: source
+    database: GCP_PROJECT_ID
+    schema: source
+    tables:
+      - name: stg_movie_fact
+      - name: stg_movie_info_dim
+      - name: stg_ratings_dim
+  - name: prod_seeds
+    database: GCP_PROJECT_ID
+    schema: prod_seeds
+    tables: 
+      - name: date_dim
